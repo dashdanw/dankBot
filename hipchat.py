@@ -5,6 +5,7 @@ from bottle import Bottle, run, request
 from imgurpython import ImgurClient
 from imgurpython.helpers.error import ImgurClientError
 from dice import roll_the_dice
+from russian_roulette import rr
 import devcmd
 import giphypop
 import googleapiclient.discovery
@@ -173,6 +174,10 @@ def handle():
         message = roll_the_dice(stuff=parsed)
     elif command == u'/halp':
         message = "bro use /dank for all, /mank for imgur, /jank for giphy, /gank for goog, /roll for roll"
+    elif command == u'/roulette' || command = u'/russian-roulette':
+        message = rr.new(room)
+    elif command == u'/trigger':
+        message = rr.trigger(who,room)
     else:
         message = "welp! command not found: {0}".format(command)
 
